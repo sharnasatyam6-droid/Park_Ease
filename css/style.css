@@ -1,0 +1,605 @@
+
+/* ==============================
+   1. GLOBAL STYLES
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #9df85d;
+    --dark: #031321;
+    --white: #ffffff;
+    --muted: #bdcbd8;
+    --border: rgba(91, 208, 224, 0.35);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* ==============================
+   2. NAVBAR
+============================== */
+
+.topbar {
+    width: min(1196px, calc(100% - 48px));
+    min-height: 68px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    position: relative;
+    z-index: 5;
+
+    border-bottom: 1px solid rgba(180, 220, 245, 0.12);
+}
+
+
+/* Logo and Brand */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.logo {
+    color: var(--green);
+    font-size: 43px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    transform: skew(-12deg);
+    text-shadow: 0 0 20px rgba(157, 248, 93, 0.25);
+}
+
+.brand strong {
+    display: block;
+    font-size: 20px;
+    letter-spacing: -0.6px;
+}
+
+.green {
+    color: var(--green);
+}
+
+.brand small {
+    display: block;
+    margin-top: 4px;
+    font-size: 9px;
+    color: #d1deea;
+}
+
+
+/* Navigation Links */
+
+.topbar nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.topbar nav a {
+    font-size: 11px;
+    font-weight: 600;
+    color: #f0f4f8;
+    position: relative;
+    padding: 27px 0 24px;
+    transition: color 0.25s ease;
+}
+
+.topbar nav a:hover,
+.topbar nav a.home {
+    color: var(--green);
+}
+
+.topbar nav a.home::after {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--green);
+}
+
+
+/* Navbar Buttons */
+
+.topbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.theme-button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    margin-right: 9px;
+}
+
+.button-outline,
+.button-green {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+
+    padding: 11px 20px;
+    border-radius: 25px;
+
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.button-outline {
+    border: 1px solid rgba(56, 202, 218, 0.55);
+    color: white;
+    background: rgba(2, 17, 30, 0.65);
+}
+
+.button-outline:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.button-green {
+    border: 1px solid var(--green);
+    background: var(--green);
+    color: #10200b;
+}
+
+.button-green:hover {
+    background: #b4ff82;
+    box-shadow: 0 0 24px rgba(157, 248, 93, 0.25);
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   3. HERO SECTION
+============================== */
+
+.hero {
+    width: min(1196px, calc(100% - 48px));
+    min-height: 380px;
+    margin: auto;
+    padding-top: 38px;
+    position: relative;
+    isolation: isolate;
+}
+
+
+/* Your extracted city background */
+
+.hero::before {
+    content: "";
+    position: absolute;
+
+    top: -68px;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(1, 12, 25, 0.55) 0%,
+            rgba(1, 12, 25, 0.18) 65%,
+            rgba(1, 12, 25, 0.08) 100%
+        ),
+        url("../assets/city-bg.png");
+
+    background-size: cover;
+    background-position: center 42%;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+}
+
+
+/* Hero Text */
+
+.hero-content {
+    max-width: 680px;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #e3f6d9;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: var(--green);
+    display: inline-block;
+}
+
+.hero h1 {
+    margin-top: 13px;
+    margin-bottom: 10px;
+
+    font-size: clamp(38px, 4vw, 46px);
+    font-weight: 900;
+    line-height: 1.06;
+    letter-spacing: -1.8px;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-content p {
+    color: #e1eaf2;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ==============================
+   4. PARKING SEARCH PANEL
+============================== */
+
+.serch-panel {
+    width: 100%;
+    min-height: 72px;
+    margin-top: 21px;
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid rgba(44, 220, 222, 0.45);
+    border-radius: 15px;
+
+    background: rgba(2, 20, 35, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22),
+        inset 0 0 20px rgba(20, 104, 130, 0.08);
+}
+
+
+/* Each Search Field */
+
+.search-field {
+    min-width: 0;
+    height: 43px;
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0 12px;
+
+    border-right: 1px solid rgba(155, 190, 211, 0.25);
+}
+
+.search-field:first-child {
+    flex: 1.4;
+    padding-left: 15px;
+}
+
+.search-field:nth-child(5) {
+    border-right: none;
+}
+
+.field-icon {
+    flex-shrink: 0;
+    color: #f0f7ff;
+    font-size: 23px;
+    line-height: 1;
+}
+
+.search-field label {
+    display: block;
+    min-width: 0;
+    flex: 1;
+}
+
+.search-field small {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #d7e2ed;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.search-field input,
+.search-field select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+
+    padding: 0;
+    border: none;
+    outline: none;
+
+    color: white;
+    background: transparent;
+
+    font-size: 10px;
+}
+
+.search-field input::placeholder {
+    color: #91a7b8;
+}
+
+.search-field input[type="date"],
+.search-field input[type="time"] {
+    color-scheme: dark;
+}
+
+.search-field select {
+    cursor: pointer;
+}
+
+.search-field select option {
+    background: #061a2b;
+    color: white;
+}
+
+
+/* Search Button */
+
+.search-button {
+    min-height: 39px;
+    padding: 0 17px;
+    margin-left: 4px;
+    flex-shrink: 0;
+}
+
+
+/* ==============================
+   5. RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 1050px) {
+    .topbar,
+    .hero {
+        width: calc(100% - 36px);
+    }
+
+    .topbar {
+        gap: 15px;
+    }
+
+    .topbar nav {
+        gap: 16px;
+    }
+
+    .brand strong {
+        font-size: 18px;
+    }
+
+    .topbar-buttons {
+        gap: 6px;
+    }
+
+    .button-outline,
+    .topbar-buttons .button-green {
+        padding: 10px 13px;
+    }
+
+    .search-field {
+        padding: 0 7px;
+        gap: 6px;
+    }
+
+    .search-field:first-child {
+        padding-left: 9px;
+    }
+
+    .field-icon {
+        font-size: 19px;
+    }
+
+    .search-button {
+        padding: 0 10px;
+    }
+}
+
+
+@media (max-width: 760px) {
+    .topbar {
+        min-height: 66px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .brand strong {
+        font-size: 17px;
+    }
+
+    .brand small {
+        font-size: 8px;
+    }
+
+    .topbar nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        padding-bottom: 10px;
+    }
+
+    .topbar nav a {
+        padding: 8px 0;
+        font-size: 10px;
+    }
+
+    .topbar nav a.home::after {
+        bottom: 2px;
+    }
+
+    .topbar-buttons {
+        margin-left: auto;
+    }
+
+    .theme-button {
+        margin-right: 0;
+        font-size: 20px;
+    }
+
+    .button-outline,
+    .topbar-buttons .button-green {
+        padding: 9px 12px;
+        font-size: 10px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 42px;
+        padding-bottom: 28px;
+    }
+
+    .hero::before {
+        background-position: 58% center;
+    }
+
+    .hero h1 {
+        font-size: clamp(32px, 7vw, 43px);
+        letter-spacing: -1px;
+    }
+
+    .hero-content p {
+        font-size: 12px;
+    }
+
+    .serch-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        padding: 10px;
+        margin-top: 24px;
+    }
+
+    .search-field,
+    .search-field:first-child,
+    .search-field:nth-child(5) {
+        min-height: 57px;
+        height: auto;
+        padding: 9px;
+        border-right: none;
+        border-bottom: 1px solid rgba(155, 190, 211, 0.2);
+    }
+
+    .search-field:nth-child(odd) {
+        border-right: 1px solid rgba(155, 190, 211, 0.2);
+    }
+
+    .search-field:nth-child(5) {
+        border-bottom: none;
+    }
+
+    .search-field small {
+        font-size: 9px;
+    }
+
+    .search-field input,
+    .search-field select {
+        font-size: 10px;
+    }
+
+    .search-button {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-height: 42px;
+        margin: 10px 0 0;
+    }
+}
+
+
+@media (max-width: 420px) {
+    .topbar,
+    .hero {
+        width: calc(100% - 26px);
+    }
+
+    .topbar nav a {
+        font-size: 9px;
+    }
+
+    .button-outline {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p br {
+        display: none;
+    }
+
+    .field-icon {
+        font-size: 17px;
+    }
+
+    .search-field {
+        gap: 6px;
+        padding: 7px !important;
+    }
+
+    .search-field input,
+    .search-field select {
+        font-size: 9px;
+    }
+}
